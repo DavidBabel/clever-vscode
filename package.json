@@ -1,8 +1,8 @@
 {
-  "name": "Clever",
+  "name": "clever",
   "displayName": "Clever VSCode",
   "description": "Add many productivity usefull commands to vscode",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "publisher": "davidbabel",
   "author": {
     "email": "babel.david@gmail.com",
@@ -18,6 +18,8 @@
   ],
   "keywords": [
     "productivity",
+    "macro",
+    "macros",
     "smart",
     "clever",
     "better",
@@ -168,16 +170,6 @@
           "type": "object",
           "default": {},
           "description": "Clever: you can define macros here. see clever/README.md for more informations."
-        },
-        "clever.rebind": {
-          "type": "object",
-          "default": {},
-          "description": "Clever: set rebind keys to values. Snippets allowed. see clever/README.md"
-        },
-        "clever.disableRebindForEdit": {
-          "type": "boolean",
-          "default": false,
-          "description": "Clever: needed to edit rebind characters using default input"
         },
         "clever.fastJump.small.linesToJump": {
           "type": "number",

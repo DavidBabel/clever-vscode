@@ -15,7 +15,10 @@ Here are all the awesome current features of __Clever__ (you can browse behaviou
 
 - 🚀🚀🚀  [fast block select](#fast-block-select)
 - 💡 [maximise (toggle) the current editor](#toggle-maximise-current-editor)
-- 🧠 [advanced macros system](#advanced-macros)
+- ⚙️ [advanced macros system](#advanced-macros)
+  - [Add fragment macro example](#add-fragment-macro-example)
+  - [Sublime Text file navigation macro example](#sublime-text-file-navigation-example)
+  - [Rebind any key to another](#rebind-any-key-to-another)
 - 🚀🚀 [quick switch between string quotes **'** → **"** → **`**](#quick-quotes-switch)
 - 🚀 [toggle endline with **","** or **";"** or **":"**](#toggle-endline)
 - 🚀 [insert incremental number or letter via multi cursor](#insert-incremental-numbers-or-letters)
@@ -24,7 +27,7 @@ Here are all the awesome current features of __Clever__ (you can browse behaviou
   - [insert curly braces](#insert-curly-braces)
   - [insert arrow function](#insert-arrow-function)
   - [insert template string var](#insert-template-string-var)
-- 🧠🧠 [an advanced guide to improve vscode by config](#create-the-best-editor)
+- ⚙️⚙️ [an advanced guide to improve vscode by config](#create-the-best-editor)
 - and more to come ...
 - and i'm aware of your ideas ([submit yours](#contribs))
 
@@ -62,11 +65,13 @@ clever.blockSelect.angleBrackets;   // <AngleBracket>  </AngleBracket>
 clever.blockSelect.inTag;           // <> inTag </>
 ```
 
-I recommand you to bind them to something like `"cmd+k '"` or `"cmd+k ("` etc ... It's very handy and may not create binding conflicts.
+I recommand you to bind them to something like `cmd+k '` or `cmd+k (` etc ... It's very handy and may not create binding conflicts.
 
-### Toggle maximise current editor
+## Toggle maximise current editor
 
 _Demo_
+
+__Note:__ this is especially helpfull on a side comparaison during commit diff
 
 ![](https://raw.githubusercontent.com/DavidBabel/clever-vscode/master/images/examples/toggle-maximize.gif)
 
@@ -81,18 +86,14 @@ _Binding suggestion:_
 }
 ```
 
-or :
+If needed, the following command is also provided :
 
-```json
-{
-  "key": "shift+ctrl+enter",
-  "mac": "shift+cmd+enter",
-  "command": "clever.maximize.toggleWithoutSidebar",
-  "when": "editorTextFocus"
-}
+```js
+clever.maximize.toggleWithoutSidebar
 ```
 
-### Advanced macros
+
+## Advanced macros
 
 The Macro feature allows you to execute a list of vscode commands or any extensions commands, including "clever vscode" ones.
 
@@ -103,12 +104,23 @@ It also provides two helpers commands (see examples below for API):
 
 The macro are a "config / keybinding" combo. The wanted macro got a name, and an array of commands :
 
+### Add fragment macro example
+
+_Demo_
+
+![](https://raw.githubusercontent.com/DavidBabel/clever-vscode/master/images/examples/macro-fragment.gif)
+
+_Configs_
+
 ```js
 {
   "clever.macros": {
-    "addFragment": [
-      "type:<>\n\n</>",   // type command with text param
-      "cursorUp"          // 2nd command
+    "exampleAddFragment": [ // macro name to remember in bindings
+      "type:<>\n\n</>",     // type command with text param
+      "cursorUp"            // 2nd command
+    ],
+    "betterAddFragment": [
+      "type:<>\n$1\n</>"    // type also support snippet syntax
     ]
     // "otherMacro": [/* commands list */]
     // ...
@@ -121,18 +133,24 @@ _Binding suggestion:_
 ```json
 {
   "key": "whatever you want",
-  "command": "clever.macros.addFragment",
+  "command": "clever.macros.betterAddFragment",
   "when": "editorTextFocus"
 }
 ```
 
-_Demo_
+__Note:__ to find every commands available, browse it in the shortcut palette `cmd+k cmd+s`
 
-![](https://raw.githubusercontent.com/DavidBabel/clever-vscode/master/images/examples/macro-fragment.gif)
-
-
+### Sublime Text file navigation macro example
 
 Another example, this macro allow to fastOpen a file without loosing focus from the file explorer (sublime text style).
+
+_Demo_
+
+![](https://raw.githubusercontent.com/DavidBabel/clever-vscode/master/images/examples/macro-quickopen.gif)
+
+This workflow is amazing, it allows you to not use your mouse to open quickly multiple files. Check the [advanced config guide](#create-the-best-editor) to create a enhanced navigation system into vscode.
+
+_Configs_
 
 ```js
 {
@@ -158,6 +176,8 @@ Another example, this macro allow to fastOpen a file without loosing focus from 
 
 _Binding suggestion:_
 
+__Note:__ to be able to map "enter" here you have to unbind it first. (see the [advanced config guide](#create-the-best-editor) to do so)
+
 ```js
 {
   "key": "right",
@@ -165,7 +185,7 @@ _Binding suggestion:_
   "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !inputFocus"
 },
 {
-  // note : in order to use the "enter" key you need to unbind it. See advanced config guide below.
+  // note : "enter" must be unbind first
   "key": "enter",
   "command": "clever.macros.openAndKeepFile",
   "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !inputFocus"
@@ -177,14 +197,31 @@ _Binding suggestion:_
 }
 ```
 
-_Demo_
+### Rebind any key to another
 
-![](https://raw.githubusercontent.com/DavidBabel/clever-vscode/master/images/examples/macro-quickopen.gif)
+The following will insert a `b` when you type a `j`. It works with any key, especially special characters.
 
-This workflow is amazing, it allows you to not use your mouse to open quickly multiple files. Check the [advanced config guide](#create-the-best-editor) to create a enhanced navigation system into vscode.
+_Configs_
 
+```js
+{
+  "clever.macros": {
+    "b": ["type:b"]
+  }
+}
+```
 
-### Quick quotes switch
+_Binding example:_
+
+```json
+{
+  "key": "j",
+  "command": "clever.macros.b",
+  "when": "editorTextFocus"
+}
+```
+
+## Quick quotes switch
 
 _Demo_
 
@@ -201,7 +238,7 @@ _Binding suggestion:_
 }
 ```
 
-### Toggle endline
+## Toggle endline
 
 _Demo_
 
@@ -230,7 +267,7 @@ _Binding suggestion:_
 })
 ```
 
-### Insert incremental numbers or letters
+## Insert incremental numbers or letters
 
 _Demo_
 
@@ -259,13 +296,13 @@ _Binding suggestion:_
 },
 {
   "key": "shift+alt+ctrl+a",
-  "mac": "shift+alt+cmd+z",
+  "mac": "shift+alt+cmd+a",
   "command": "clever.multipast.AtoN",
   "when": "editorTextFocus"
 })
 ```
 
-### Fast cursor navigation
+## Fast cursor navigation
 
 _Demo_
 
@@ -333,11 +370,11 @@ _Binding suggestion:_
 })
 ```
 
-### Shortcuts
+## Shortcuts
 
 Clever also provide some usefull shortcuts out of the box.
 
-#### Insert curly braces
+### Insert curly braces
 
 _Demo_
 
@@ -354,7 +391,7 @@ _Binding suggestion:_
 }
 ```
 
-#### Insert arrow function
+### Insert arrow function
 
 _Demo_ (not related to intellisense, this is a keyboard shortcut)
 
@@ -371,7 +408,7 @@ _Binding suggestion:_
 }
 ```
 
-#### Insert template string var
+### Insert template string var
 
 _Demo_
 
@@ -407,7 +444,7 @@ If you want to help, find a bug or just correct an english mistake please [creat
 
 ## Why embed other libraries
 
-For me the features provided by the embed library are from far, the big miss in vscode base commands. I had to modify some of it to add new awesome features.
+For me, the features provided by the embed library are from far, the big miss in vscode base commands. I had to modify some of it to add new awesome features.
 
 Also, as i said in introduction, i made this library for myself initially, and include them to be sure they will never disapear or stop to be maintained with a possible incompatible vscode version.
 
