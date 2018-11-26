@@ -1,65 +1,418 @@
-# cleaver README
+# Clever Visual Studio Code
 
-This is the README for your extension "cleaver". After writing up a brief description, we recommend including the following sections.
+<img src="https://raw.githubusercontent.com/DavidBabel/clever-vscode/master/images/icon-small.png" style="width: 120px; float: left; margin: 20px">
+
+**Clever vscode** was initially a personnal project to provide some missing features to the editor. Especially __Sublime Text__ one, my former love.
+
+After sharing it with almost all my friends they motivate me to push it for cummunity.
+
+Suggestions, PR or ideas for embed macros are very welcome.
+<br/><br/><br/>
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+Here are all the awesome current features of __Clever__ (you can browse behaviour gifs below):
 
-For example if there is an image subfolder under your extension project workspace:
+- 🚀🚀🚀  [fast block select](#fast-block-select)
+- 💡 [maximise (toggle) the current editor](#toggle-maximise-current-editor)
+- 🧠 [advanced macros system](#advanced-macros)
+- 🚀🚀 [quick switch between string quotes **'** → **"** → **`**](#quick-quotes-switch)
+- 🚀 [toggle endline with **","** or **";"** or **":"**](#toggle-endline)
+- 🚀 [insert incremental number or letter via multi cursor](#insert-incremental-numbers-or-letters)
+- 🚀 [fast cursor navigation / selection](#fast-cursor-navigation)
+- 🚀 [shortcut commands to](#shortcuts) :
+  - [insert curly braces](#insert-curly-braces)
+  - [insert arrow function](#insert-arrow-function)
+  - [insert template string var](#insert-template-string-var)
+- 🧠🧠 [an advanced guide to improve vscode by config](#create-the-best-editor)
+- and more to come ...
+- and i'm aware of your ideas ([submit yours](#contribs))
 
-\!\[feature X\]\(images/feature-x.png\)
+Every feature comes with keybinding suggestions. On install, this extension does not set any keybinding to prevent issues with different countries keyboard compatibility and allow you to only use the keybindings you need.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+So you have to set it manually in your `keybindings.json`. We are developpers, we made the `json` version ;)
 
-## Requirements
+## Fast block select
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+_Demo_
 
-## Extension Settings
+__Note__ that this is a single same shortcut allowing this result :
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+![](https://raw.githubusercontent.com/DavidBabel/clever-vscode/master/images/examples/block-clever.gif)
 
-For example:
+_Binding suggestion:_
 
-This extension contributes the following settings:
+```json
+{
+  "key": "ctrl+r",
+  "mac": "cmd+r",
+  "command": "clever.blockSelect.cleverSelect",
+  "when": "editorTextFocus"
+}
+```
 
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+If needed, the following commands are also provided :
 
-## Known Issues
+```js
+clever.blockSelect.quotes;          // " " , ' ' , ` `
+clever.blockSelect.parenthesis;     // ( )
+clever.blockSelect.squareBrackets;  // [ ]
+clever.blockSelect.curlyBrackets;   // { }
+clever.blockSelect.angleBrackets;   // <AngleBracket>  </AngleBracket>
+clever.blockSelect.inTag;           // <> inTag </>
+```
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+I recommand you to bind them to something like `"cmd+k '"` or `"cmd+k ("` etc ... It's very handy and may not create binding conflicts.
 
-## Release Notes
+### Toggle maximise current editor
 
-Users appreciate release notes as you update your extension.
+_Demo_
 
-### 1.0.0
+![](https://raw.githubusercontent.com/DavidBabel/clever-vscode/master/images/examples/toggle-maximize.gif)
 
-Initial release of ...
+_Binding suggestion:_
 
-### 1.0.1
+```json
+{
+  "key": "shift+ctrl+enter",
+  "mac": "shift+cmd+enter",
+  "command": "clever.maximize.toggleWithSidebar",
+  "when": "editorTextFocus"
+}
+```
 
-Fixed issue #.
+or :
 
-### 1.1.0
+```json
+{
+  "key": "shift+ctrl+enter",
+  "mac": "shift+cmd+enter",
+  "command": "clever.maximize.toggleWithoutSidebar",
+  "when": "editorTextFocus"
+}
+```
 
-Added features X, Y, and Z.
+### Advanced macros
 
------------------------------------------------------------------------------------------------------------
+The Macro feature allows you to execute a list of vscode commands or any extensions commands, including "clever vscode" ones.
 
-## Working with Markdown
+It also provides two helpers commands (see examples below for API):
 
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
+- a `wait` helper to be able to manage async commands (especially extension ones which may miss to await callbacks).
+- a `type` helper to insert text, like a "programmatic snippet".
 
-* Split the editor (`Cmd+\` on OSX or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on OSX or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (OSX) to see a list of Markdown snippets
+The macro are a "config / keybinding" combo. The wanted macro got a name, and an array of commands :
 
-### For more information
+```js
+{
+  "clever.macros": {
+    "addFragment": [
+      "type:<>\n\n</>",   // type command with text param
+      "cursorUp"          // 2nd command
+    ]
+    // "otherMacro": [/* commands list */]
+    // ...
+  }
+}
+```
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+_Binding suggestion:_
 
-**Enjoy!**
+```json
+{
+  "key": "whatever you want",
+  "command": "clever.macros.addFragment",
+  "when": "editorTextFocus"
+}
+```
+
+_Demo_
+
+![](https://raw.githubusercontent.com/DavidBabel/clever-vscode/master/images/examples/macro-fragment.gif)
+
+
+
+Another example, this macro allow to fastOpen a file without loosing focus from the file explorer (sublime text style).
+
+```js
+{
+  "clever.macros": {
+    "fastOpenFile": [
+      "list.select",                   // open current hover file
+      "wait:20",                       // wait for 20ms before next (default 50ms)
+      "workbench.action.focusSideBar"  // send focus back to the file explorer
+    ],
+    "openAndKeepFile": [
+      "list.select",                   // open current hover file
+      "workbench.action.files.save",   // this will keep the file open
+      "wait:20",                       // wait for 20ms before next (default 50ms)
+      "workbench.action.focusSideBar"  // send focus back to the file explorer
+    ],
+    "openFile": [
+      "list.select",                   // open current hover file
+      "workbench.action.files.save",   // this will keep the file open
+    ]
+  }
+}
+```
+
+_Binding suggestion:_
+
+```js
+{
+  "key": "right",
+  "command": "clever.macros.fastOpenFile",
+  "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !inputFocus"
+},
+{
+  // note : in order to use the "enter" key you need to unbind it. See advanced config guide below.
+  "key": "enter",
+  "command": "clever.macros.openAndKeepFile",
+  "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !inputFocus"
+},
+{
+  "key": "left",
+  "command": "clever.macros.openFile",
+  "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !inputFocus"
+}
+```
+
+_Demo_
+
+![](https://raw.githubusercontent.com/DavidBabel/clever-vscode/master/images/examples/macro-quickopen.gif)
+
+This workflow is amazing, it allows you to not use your mouse to open quickly multiple files. Check the [advanced config guide](#create-the-best-editor) to create a enhanced navigation system into vscode.
+
+
+### Quick quotes switch
+
+_Demo_
+
+![](https://raw.githubusercontent.com/DavidBabel/clever-vscode/master/images/examples/quote-switch.gif)
+
+_Binding suggestion:_
+
+```json
+{
+  "key": "ctrl+`",
+  "mac": "cmd+`",
+  "command": "clever.string.nextQuotes",
+  "when": "editorTextFocus"
+}
+```
+
+### Toggle endline
+
+_Demo_
+
+![](https://raw.githubusercontent.com/DavidBabel/clever-vscode/master/images/examples/toggle-endline.gif)
+
+_Binding suggestion:_
+
+```json
+({
+  "key": "ctrl+;",
+  "mac": "cmd+;",
+  "command": "clever.toggleEnd.semicolon",
+  "when": "editorTextFocus"
+},
+{
+  "key": "ctrl+:",
+  "mac": "cmd+:",
+  "command": "clever.toggleEnd.colon",
+  "when": "editorTextFocus"
+},
+{
+  "key": "ctrl+[Comma]",
+  "mac": "cmd+[Comma]",
+  "command": "clever.toggleEnd.comma",
+  "when": "editorTextFocus"
+})
+```
+
+### Insert incremental numbers or letters
+
+_Demo_
+
+![](https://raw.githubusercontent.com/DavidBabel/clever-vscode/master/images/examples/multipaste.gif)
+
+_Binding suggestion:_
+
+```json
+({
+  "key": "shift+ctrl+0",
+  "mac": "shift+cmd+0",
+  "command": "clever.multipast.0toN",
+  "when": "editorTextFocus"
+},
+{
+  "key": "shift+ctrl+1",
+  "mac": "shift+cmd+1",
+  "command": "clever.multipast.1toN",
+  "when": "editorTextFocus"
+},
+{
+  "key": "shift+ctrl+a",
+  "mac": "shift+cmd+a",
+  "command": "clever.multipast.atoN",
+  "when": "editorTextFocus"
+},
+{
+  "key": "shift+alt+ctrl+a",
+  "mac": "shift+alt+cmd+z",
+  "command": "clever.multipast.AtoN",
+  "when": "editorTextFocus"
+})
+```
+
+### Fast cursor navigation
+
+_Demo_
+
+![](https://raw.githubusercontent.com/DavidBabel/clever-vscode/master/images/examples/block-select.gif)
+
+_Configs_
+
+```js
+// Clever: number of lines of small jumps
+"clever.fastJump.small.linesToJump": 5,
+// Clever: number of lines of large jumps
+"clever.fastJump.large.linesToJump": 10
+```
+
+_Binding suggestion:_
+
+```json
+({
+  "key": "ctrl+up",
+  "mac": "cmd+up",
+  "command": "clever.fastJump.small.up",
+  "when": "editorTextFocus"
+},
+{
+  "key": "ctrl+down",
+  "mac": "cmd+down",
+  "command": "clever.fastJump.small.down",
+  "when": "editorTextFocus"
+},
+{
+  "key": "shift+ctrl+up",
+  "mac": "shift+cmd+up",
+  "command": "clever.fastJump.small.selectUp",
+  "when": "editorTextFocus"
+},
+{
+  "key": "shift+ctrl+down",
+  "mac": "shift+cmd+down",
+  "command": "clever.fastJump.small.selectDown",
+  "when": "editorTextFocus"
+},
+{
+  "key": "alt+ctrl+pageup",
+  "mac": "alt+cmd+pageup",
+  "command": "clever.fastJump.big.up",
+  "when": "editorTextFocus"
+},
+{
+  "key": "alt+ctrl+pagedown",
+  "mac": "alt+cmd+pagedown",
+  "command": "clever.fastJump.big.down",
+  "when": "editorTextFocus"
+},
+{
+  "key": "shift+alt+ctrl+pageup",
+  "mac": "shift+alt+cmd+pageup",
+  "command": "clever.fastJump.big.selectUp",
+  "when": "editorTextFocus"
+},
+{
+  "key": "shift+alt+ctrl+pagedown",
+  "mac": "shift+alt+cmd+pagedown",
+  "command": "clever.fastJump.big.selectDown",
+  "when": "editorTextFocus"
+})
+```
+
+### Shortcuts
+
+Clever also provide some usefull shortcuts out of the box.
+
+#### Insert curly braces
+
+_Demo_
+
+![](https://raw.githubusercontent.com/DavidBabel/clever-vscode/master/images/examples/fast-curly.gif)
+
+_Binding suggestion:_
+
+```json
+{
+  "key": "ctrl+{",
+  "mac": "cmd+{",
+  "command": "clever.fastInsert.curly",
+  "when": "editorTextFocus"
+}
+```
+
+#### Insert arrow function
+
+_Demo_ (not related to intellisense, this is a keyboard shortcut)
+
+![](https://raw.githubusercontent.com/DavidBabel/clever-vscode/master/images/examples/fast-arrow.gif)
+
+_Binding suggestion:_
+
+```json
+{
+  "key": "ctrl+=",
+  "mac": "cmd+=",
+  "command": "clever.fastInsert.arrowFunction",
+  "when": "editorTextFocus"
+}
+```
+
+#### Insert template string var
+
+_Demo_
+
+![](https://raw.githubusercontent.com/DavidBabel/clever-vscode/master/images/examples/template-var.gif)
+
+_Binding suggestion:_
+
+```json
+{
+  "key": "ctrl+$",
+  "mac": "cmd+$",
+  "command": "clever.string.insertTemplateVar",
+  "when": "editorTextFocus"
+}
+```
+
+## Create the best editor
+
+Here is a complete guide to custom your editor the right way.
+
+This does not need any extension, only modify the editor `settings.json` and `keybindings.json` the right way.
+
+// WIP
+
+## Contribs
+
+If you want to help, find a bug or just correct an english mistake please [create an issue](https://github.com/DavidBabel/clever-vscode/issues).
+
+## Inspirations & credits
+
+- document parser by Vilic : https://github.com/vilic/vscode-es-quotes
+- selecting library by dbankier https://github.com/dbankier/vscode-quick-select
+
+## Why embed other libraries
+
+For me the features provided by the embed library are from far, the big miss in vscode base commands. I had to modify some of it to add new awesome features.
+
+Also, as i said in introduction, i made this library for myself initially, and include them to be sure they will never disapear or stop to be maintained with a possible incompatible vscode version.
+
+## License
+
+MIT. Copyright (c) David Babel.
+
+**Donations:** If you like this package, want it to be maintained and use it to makes millions, you can buy me [a coffee](https://www.paypal.me/devilhunter/2) ☕ or [a beer](https://www.paypal.me/devilhunter/4) 🍺.

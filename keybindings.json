@@ -1,0 +1,152 @@
+{
+  "keybindings": [
+    {
+      "command": "clever.blockSelect.cleverSelect",
+      "key": "shift+ctrl+dd",
+      "mac": "cmd+1",
+      "when": "editorTextFocus"
+    },
+    {
+      "command": "clever.blockSelect.quotes",
+      "key": "shift+ctrl+dd",
+      "mac": "cmd+2",
+      "when": "editorTextFocus"
+    },
+    {
+      "command": "clever.blockSelect.quotesBeta",
+      "key": "shift+ctrl+dd",
+      "mac": "cmd+8",
+      "when": "editorTextFocus"
+    },
+    {
+      "command": "clever.blockSelect.parenthesis",
+      "key": "shift+ctrl+dd",
+      "mac": "cmd+3",
+      "when": "editorTextFocus"
+    },
+    {
+      "command": "clever.blockSelect.squareBrackets",
+      "key": "shift+ctrl+dd",
+      "mac": "cmd+4",
+      "when": "editorTextFocus"
+    },
+    {
+      "command": "clever.blockSelect.curlyBrackets",
+      "key": "shift+ctrl+dd",
+      "mac": "cmd+5",
+      "when": "editorTextFocus"
+    },
+    {
+      "command": "clever.blockSelect.angleBrackets",
+      "key": "shift+ctrl+dd",
+      "mac": "cmd+6",
+      "when": "editorTextFocus"
+    },
+    {
+      "command": "clever.blockSelect.inTag",
+      "key": "shift+ctrl+dd",
+      "mac": "cmd+7",
+      "when": "editorTextFocus"
+    },
+    {
+      "command": "clever.rebind.•",
+      "key": "alt+[IntlBackslash]",
+      "when": "editorTextFocus"
+    },
+    {
+      "command": "clever.rebind.",
+      "key": "alt+1",
+      "when": "editorTextFocus"
+    },
+    {
+      "command": "clever.rebind.¶",
+      "key": "alt+6",
+      "when": "editorTextFocus"
+    },
+    {
+      "command": "clever.rebind.®",
+      "key": "alt+r",
+      "when": "editorTextFocus"
+    },
+    {
+      "command": "clever.rebind.†",
+      "key": "alt+t",
+      "when": "editorTextFocus"
+    },
+    {
+      "command": "clever.rebind.º",
+      "key": "alt+u",
+      "when": "editorTextFocus"
+    },
+    {
+      "command": "clever.rebind.π",
+      "key": "alt+p",
+      "when": "editorTextFocus"
+    },
+    {
+      "command": "clever.rebind.‡",
+      "key": "alt+q",
+      "when": "editorTextFocus"
+    },
+    {
+      "command": "clever.rebind.ƒ",
+      "key": "alt+f",
+      "when": "editorTextFocus"
+    },
+    {
+      "command": "clever.rebind.ﬁ",
+      "key": "alt+g",
+      "when": "editorTextFocus"
+    },
+    {
+      "command": "clever.rebind.¬",
+      "key": "alt+l",
+      "when": "editorTextFocus"
+    },
+    {
+      "command": "clever.rebind.µ",
+      "key": "alt+m",
+      "when": "editorTextFocus"
+    },
+    {
+      "command": "clever.rebind.≈",
+      "key": "alt+x",
+      "when": "editorTextFocus"
+    },
+    {
+      "command": "clever.rebind.©",
+      "key": "alt+c",
+      "when": "editorTextFocus"
+    },
+    {
+      "command": "clever.rebind.◊",
+      "key": "alt+v",
+      "when": "editorTextFocus"
+    },
+    {
+      "command": "clever.rebind.ß",
+      "key": "alt+b",
+      "when": "editorTextFocus"
+    },
+    {
+      "command": "clever.rebind.∞",
+      "key": "alt+[KeyM]",
+      "when": "editorTextFocus"
+    },
+    {
+      "command": "clever.rebind.…",
+      "key": "alt+[Comma]",
+      "when": "editorTextFocus"
+    },
+    {
+      "command": "clever.rebind.÷",
+      "key": "alt+[Period]",
+      "when": "editorTextFocus"
+    },
+    {
+      "command": "clever.rebind.≠",
+      "key": "alt+=",
+      "when": "editorTextFocus"
+    }
+  ]
+}
