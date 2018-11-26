@@ -433,6 +433,8 @@ This does not need any extension, only modify the editor `settings.json` and `ke
 
 // WIP
 
+Take a look at https://vscodecandothat.com/. You will learn a lot a things, for sure.
+
 ## Contribs
 
 If you want to help, find a bug or just correct an english mistake please [create an issue](https://github.com/DavidBabel/clever-vscode/issues).
