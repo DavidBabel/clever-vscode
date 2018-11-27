@@ -104,7 +104,7 @@ It also provides two helpers commands (see examples below for API):
 - a `wait` helper to be able to manage async commands (especially extension ones which may miss to await callbacks).
 - a `type` helper to insert text, like a "programmatic snippet".
 
-The macro are a "config / keybinding" combo. The wanted macro got a name, and an array of commands :
+Each macro is a "config / keybinding" combo. The wanted macro got a name, and an array of commands :
 
 ### Add fragment macro example
 
