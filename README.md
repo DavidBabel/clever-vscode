@@ -7,6 +7,8 @@
 After sharing it with almost all my friends they motivate me to push it for cummunity.
 
 Suggestions, PR or ideas for embed macros are very welcome.
+
+Think about [rating and review](https://marketplace.visualstudio.com/items?itemName=davidbabel.Clever).
 <br/><br/><br/>
 
 ## Features
