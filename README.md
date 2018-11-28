@@ -2,7 +2,7 @@
 
 <img src="https://raw.githubusercontent.com/DavidBabel/clever-vscode/master/images/icon-small.png" style="width: 120px; float: left; margin: 20px">
 
-**Clever vscode** was initially a personnal project to provide some missing features to the editor. Especially __Sublime Text__ one, my former love.
+**Clever vscode** was initially a personnal project to provide some missing features to the editor. It inspired from __Sublime Text__, __Google Chrome__ and __iTerm__ worflows.
 
 After sharing it with almost all my friends they motivate me to push it for cummunity.
 
