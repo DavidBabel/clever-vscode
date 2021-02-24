@@ -2,7 +2,7 @@
   "name": "clever",
   "displayName": "Clever VSCode",
   "description": "Add many productivity usefull commands to vscode",
-  "version": "0.0.13",
+  "version": "0.1.0",
   "publisher": "davidbabel",
   "author": {
     "email": "babel.david@gmail.com",
