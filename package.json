@@ -14,6 +14,8 @@
     "vscode": "^1.15.0"
   },
   "categories": [
+    "Snippets",
+    "Keymaps",
     "Other"
   ],
   "keywords": [
@@ -28,7 +30,9 @@
     "indent",
     "format",
     "selection",
-    "navigation"
+    "navigation",
+    "maximize",
+    "toggle"
   ],
   "activationEvents": [
     "*"

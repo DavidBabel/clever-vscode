@@ -22,9 +22,9 @@ install:
 script:
 #   - npm test --silent
 
-env:
-  global:
-    secure: "jWA+RdGCxdwA/0L+bxbPtBKqyeqMXWHBxhzmrx7EzwlLzUr8NN/ULa1esfdsdBvDO4TXOvyFfwZ2NyJguOzedw5GVKD/0zaHHyE0f/aPVjXWuJNPup43FNOYEjSEuq7akXN7HNEW1eRgClmgAkD2bc//0XbmdVXY2j7UzY0MRwNPhL5z4dJiyZdBMkQbKUnsf48nqurazQuFLQinQVTXaLf9iRW6QDCtxi0G0tyTDvlv+zRwtDRVo9uqix2jyhJiGPdRf/CK7TVxhqQfo7C5MQFPrNDcUXAdlPB9ccnjTYwaTGcGy7wjz56UJpth9rl22kDvsBJKBLwxpe15962PH/0C3RMN5jmgUf1X89k8OXcx2v0wp5T0v0WabstOhequ7GoaGObw0eBdmn0I3vIa/RsUhkeODmsVfwbM2aen3ciX0AfMe4me1SRp8mjIQE0INs1mrgH2vfCVTDtYuewY9d0smS0BMvEjgSbLERkq0sd5qTWelcaWUtc8YiHkJYlufqYDH2dc/8XyYkbo2JD/Vn8iN1j1BNW/uJ4NHVfLuycWx2YvxdwEZucy/lQ9jpD8WUj8zczMutTb/2/F7QeUxtyUXoFYCuxeiv+0WewpmYAaqFqBBXi8kV22VPiUY6d7XQrZVbxB6YPI/omGF1zFfeVr9oez3Cv62FaTr+bUV3s="
+# env:
+#   global:
+#     secure: "jWA+RdGCxdwA/0L+bxbPtBKqyeqMXWHBxhzmrx7EzwlLzUr8NN/ULa1esfdsdBvDO4TXOvyFfwZ2NyJguOzedw5GVKD/0zaHHyE0f/aPVjXWuJNPup43FNOYEjSEuq7akXN7HNEW1eRgClmgAkD2bc//0XbmdVXY2j7UzY0MRwNPhL5z4dJiyZdBMkQbKUnsf48nqurazQuFLQinQVTXaLf9iRW6QDCtxi0G0tyTDvlv+zRwtDRVo9uqix2jyhJiGPdRf/CK7TVxhqQfo7C5MQFPrNDcUXAdlPB9ccnjTYwaTGcGy7wjz56UJpth9rl22kDvsBJKBLwxpe15962PH/0C3RMN5jmgUf1X89k8OXcx2v0wp5T0v0WabstOhequ7GoaGObw0eBdmn0I3vIa/RsUhkeODmsVfwbM2aen3ciX0AfMe4me1SRp8mjIQE0INs1mrgH2vfCVTDtYuewY9d0smS0BMvEjgSbLERkq0sd5qTWelcaWUtc8YiHkJYlufqYDH2dc/8XyYkbo2JD/Vn8iN1j1BNW/uJ4NHVfLuycWx2YvxdwEZucy/lQ9jpD8WUj8zczMutTb/2/F7QeUxtyUXoFYCuxeiv+0WewpmYAaqFqBBXi8kV22VPiUY6d7XQrZVbxB6YPI/omGF1zFfeVr9oez3Cv62FaTr+bUV3s="
 
 after_success:
   - npm install -g vsce;
@@ -38,7 +38,7 @@ deploy:
     api_key:
       secure: sTg0jGGl4VBeHC98tbnvJHk1DaJmtcMHOY9353QA0tL0hc4i5iXYBaQoEi6yYUrRUh+Kx4LMjqgiWTw8k5PDjhWjFCN8z/ftcT7In/3UrMFteIYma/Op+8A2vywt7xbdEZb+71I9O/fxC1ECYewPfd0Y7n+FkuqQbJDRBj7XqvlcrGjYBY4+ancF/rj3P2cCrJ5tEeck6jJYwhac/cZvZeKGMYFHNvLijeZKDbmZs6F8DMXlK5+/2+roDVGN5Fj39y+Zz8PQQM4xvBqXYhtF7PH0YmmammfUUugQMsD+SEH7M6u6Ngjms39cqEfdJOgeXSY9I/06jS2efXku5aj4iYLOe1dMXEGL1VikWYhTdDHdsF2GS90I7vk0wjipy+LnrdobqODsKZoRkw6fEzQtShzeIbNQl/T3wSumbi3xBd8VIO+i2GfAz4o3aNB6FL5/JmBYaXNQVu02Pi1Vvv1tebfMvKJBsQeIDPvDPudgIYDl6QmFc0WJmoAF6uqR4itnuWozTUVurCnrYuA4aTLti3u/CUZz1n7QhKL2mZesPBmWTH0U5+roSXvrdkwsV0QvIxApM08+wO/Uhr3MOiu1mQ/24kPGxP8E/UtM6nhmlAaD3SvNWdcjtB69N6EFNA2RxRnzu3zJJwIYC1ekzNiuwbnISdrnM41+KfqV9Bi3Dx0=
     file_glob: true
-    file: '*.vsix'
+    file: "*.vsix"
     skip_cleanup: true
     on:
       repo: DavidBabel/clever-vscode
