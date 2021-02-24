@@ -202,9 +202,7 @@
     "@types/mocha": "^2.2.42",
     "@types/node": "^6.0.88",
     "mocha": "^3.5.0",
-    "typescript": "^4.2.2"
-  },
-  "dependencies": {
+    "typescript": "^4.2.2",
     "vscode": "^1.1.5"
   }
 }
