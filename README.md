@@ -16,21 +16,21 @@ Think about [rating and review](https://marketplace.visualstudio.com/items?itemN
 Here are all the awesome current features of **Clever** (you can browse behaviour gifs below):
 
 - 🚀🚀🚀 [fast block select](#fast-block-select)
-- 💡 [maximise (toggle) the current editor](#toggle-maximise-current-editor)
-- ⚙️ [advanced macros system](#advanced-macros)
-  - [Add fragment macro example](#add-fragment-macro-example)
-  - [Sublime Text file navigation macro example](#sublime-text-file-navigation-example)
-  - [Rebind any key to another](#rebind-any-key-to-another)
-- 🚀🚀 [quick switch between string quotes ' → " → `](#quick-quotes-switch)
-- 🚀 [toggle endline with **","** or **";"** or **":"**](#toggle-endline)
-- 🚀 [insert incremental number or letter via multi cursor](#insert-incremental-numbers-or-letters)
-- 🚀 [fast cursor navigation / selection](#fast-cursor-navigation)
-- 🚀 [shortcut commands to](#shortcuts) :
-  - [insert curly braces](#insert-curly-braces)
-  - [insert array](#insert-array)
-  - [insert arrow function](#insert-arrow-function)
-  - [insert template string var](#insert-template-string-var)
-- ⚙️⚙️ [an advanced guide to improve vscode by config](#create-the-best-editor)
+- 💡 [maximise (toggle) the current editor](#Toggle-maximise-current-editor)
+- ⚙️ [advanced macros system](#Advanced-macros)
+  - [Add fragment macro example](#Add-fragment-macro-example)
+  - [Sublime Text file navigation macro example](#Sublime-Text-file-navigation-macro-example)
+  - [Rebind any key to another](#Rebind-any-key-to-another)
+- 🚀🚀 [quick switch between string quotes ' → " → `](#Quick-quotes-switch)
+- 🚀 [toggle endline with **","** or **";"** or **":"**](#Toggle-endline)
+- 🚀 [insert incremental number or letter via multi cursor](#Insert-incremental-numbers-or-letters)
+- 🚀 [fast cursor navigation / selection](#Fast-cursor-navigation)
+- 🚀 [shortcut commands to](#Shortcuts) :
+  - [insert curly braces](#Insert-curly-braces)
+  - [insert array](#Insert-array)
+  - [insert arrow function](#Insert-arrow-function)
+  - [insert template string var](#Insert-template-string-var)
+- ⚙️⚙️ [an advanced guide to improve vscode by config](#Create-the-best-editor)
 - and more to come ...
 - and i'm aware of your ideas ([submit yours](#contribs))
 
