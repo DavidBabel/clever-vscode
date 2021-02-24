@@ -17,7 +17,7 @@ export function fastCurly() {
   ]);
 }
 export function fastArray() {
-  executeCommands(["cursorEnd", "wait:60", insertSnippet.bind(null, "[$1]")]);
+  executeCommands([insertSnippet.bind(null, "[$1]")]);
 }
 
 export function fastArrowFunction() {
