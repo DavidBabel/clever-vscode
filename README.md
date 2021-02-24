@@ -2,7 +2,7 @@
 
 <img src="https://raw.githubusercontent.com/DavidBabel/clever-vscode/master/images/icon-small.png" style="width: 120px; float: left; margin: 20px">
 
-**Clever vscode** was initially a personnal project to provide some missing features to the editor. It inspired from __Sublime Text__, __Google Chrome__ and __iTerm__ worflows.
+**Clever vscode** was initially a personnal project to provide some missing features to the editor. It inspired from **Sublime Text**, **Google Chrome** and **iTerm** worflows.
 
 After sharing it with almost all my friends they motivate me to push it for cummunity.
 
@@ -13,20 +13,21 @@ Think about [rating and review](https://marketplace.visualstudio.com/items?itemN
 
 ## Features
 
-Here are all the awesome current features of __Clever__ (you can browse behaviour gifs below):
+Here are all the awesome current features of **Clever** (you can browse behaviour gifs below):
 
-- 🚀🚀🚀  [fast block select](#fast-block-select)
+- 🚀🚀🚀 [fast block select](#fast-block-select)
 - 💡 [maximise (toggle) the current editor](#toggle-maximise-current-editor)
 - ⚙️ [advanced macros system](#advanced-macros)
   - [Add fragment macro example](#add-fragment-macro-example)
   - [Sublime Text file navigation macro example](#sublime-text-file-navigation-example)
   - [Rebind any key to another](#rebind-any-key-to-another)
-- 🚀🚀 [quick switch between string quotes **'** → **"** → **`**](#quick-quotes-switch)
+- 🚀🚀 [quick switch between string quotes ' → " → `](#quick-quotes-switch)
 - 🚀 [toggle endline with **","** or **";"** or **":"**](#toggle-endline)
 - 🚀 [insert incremental number or letter via multi cursor](#insert-incremental-numbers-or-letters)
 - 🚀 [fast cursor navigation / selection](#fast-cursor-navigation)
 - 🚀 [shortcut commands to](#shortcuts) :
   - [insert curly braces](#insert-curly-braces)
+  - [insert array](#insert-array)
   - [insert arrow function](#insert-arrow-function)
   - [insert template string var](#insert-template-string-var)
 - ⚙️⚙️ [an advanced guide to improve vscode by config](#create-the-best-editor)
@@ -41,7 +42,7 @@ So you have to set it manually in your `keybindings.json`. We are developpers, w
 
 _Demo_
 
-__Note__ that this is a single same shortcut allowing this result :
+**Note** that this is a single same shortcut allowing this result :
 
 ![](https://raw.githubusercontent.com/DavidBabel/clever-vscode/master/images/examples/block-clever.gif)
 
@@ -59,12 +60,12 @@ _Binding suggestion:_
 If needed, the following commands are also provided :
 
 ```js
-clever.blockSelect.quotes;          // " " , ' ' , ` `
-clever.blockSelect.parenthesis;     // ( )
-clever.blockSelect.squareBrackets;  // [ ]
-clever.blockSelect.curlyBrackets;   // { }
-clever.blockSelect.angleBrackets;   // <AngleBracket>  </AngleBracket>
-clever.blockSelect.inTag;           // <> inTag </>
+clever.blockSelect.quotes; // " " , ' ' , ` `
+clever.blockSelect.parenthesis; // ( )
+clever.blockSelect.squareBrackets; // [ ]
+clever.blockSelect.curlyBrackets; // { }
+clever.blockSelect.angleBrackets; // <AngleBracket>  </AngleBracket>
+clever.blockSelect.inTag; // <> inTag </>
 ```
 
 I recommand you to bind them to something like `cmd+k '` or `cmd+k (` etc ... It's very handy and may not create binding conflicts.
@@ -73,7 +74,7 @@ I recommand you to bind them to something like `cmd+k '` or `cmd+k (` etc ... It
 
 _Demo_
 
-__Note:__ this is especially helpfull on a side comparaison during commit diff
+**Note:** this is especially helpfull on a side comparaison during commit diff
 
 ![](https://raw.githubusercontent.com/DavidBabel/clever-vscode/master/images/examples/toggle-maximize.gif)
 
@@ -91,9 +92,8 @@ _Binding suggestion:_
 If needed, the following command is also provided :
 
 ```js
-clever.maximize.toggleWithoutSidebar
+clever.maximize.toggleWithoutSidebar;
 ```
-
 
 ## Advanced macros
 
@@ -140,7 +140,7 @@ _Binding suggestion:_
 }
 ```
 
-__Note:__ to find every commands available, browse it in the shortcut palette `cmd+k cmd+s`
+**Note:** to find every commands available, browse it in the shortcut palette `cmd+k cmd+s`
 
 ### Sublime Text file navigation macro example
 
@@ -178,7 +178,7 @@ _Configs_
 
 _Binding suggestion:_
 
-__Note:__ to be able to map "enter" here you have to unbind it first. (see the [advanced config guide](#create-the-best-editor) to do so)
+**Note:** to be able to map "enter" here you have to unbind it first. (see the [advanced config guide](#create-the-best-editor) to do so)
 
 ```js
 {
@@ -233,7 +233,7 @@ _Binding suggestion:_
 
 ```json
 {
-  "key": "ctrl+`",
+  "key": "alt+3",
   "mac": "cmd+`",
   "command": "clever.string.nextQuotes",
   "when": "editorTextFocus"
@@ -250,19 +250,19 @@ _Binding suggestion:_
 
 ```json
 ({
-  "key": "ctrl+;",
+  "key": "ctrl+oem_period",
   "mac": "cmd+;",
   "command": "clever.toggleEnd.semicolon",
   "when": "editorTextFocus"
 },
 {
-  "key": "ctrl+:",
+  "key": "ctrl+oem_2",
   "mac": "cmd+:",
   "command": "clever.toggleEnd.colon",
   "when": "editorTextFocus"
 },
 {
-  "key": "ctrl+[Comma]",
+  "key": "ctrl+oem_comma",
   "mac": "cmd+[Comma]",
   "command": "clever.toggleEnd.comma",
   "when": "editorTextFocus"
@@ -386,11 +386,28 @@ _Binding suggestion:_
 
 ```json
 {
-  "key": "ctrl+{",
+  "key": "alt-4",
   "mac": "cmd+{",
   "command": "clever.fastInsert.curly",
   "when": "editorTextFocus"
 }
+```
+
+### Insert array
+
+_Demo_
+
+![](https://raw.githubusercontent.com/DavidBabel/clever-vscode/master/images/examples/fast-array.gif)
+
+_Binding suggestion:_
+
+```json
+{
+  "key": "alt+5",
+  "mac": "cmd+{",
+  "command": "clever.fastInsert.array",
+  "when": "editorTextFocus"
+},
 ```
 
 ### Insert arrow function
@@ -403,7 +420,7 @@ _Binding suggestion:_
 
 ```json
 {
-  "key": "ctrl+=",
+  "key": "ctrl+3",
   "mac": "cmd+=",
   "command": "clever.fastInsert.arrowFunction",
   "when": "editorTextFocus"
@@ -420,7 +437,7 @@ _Binding suggestion:_
 
 ```json
 {
-  "key": "ctrl+$",
+  "key": "ctrl+oem_1",
   "mac": "cmd+$",
   "command": "clever.string.insertTemplateVar",
   "when": "editorTextFocus"

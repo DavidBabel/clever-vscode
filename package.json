@@ -2,7 +2,7 @@
   "name": "clever",
   "displayName": "Clever VSCode",
   "description": "Add many productivity usefull commands to vscode",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "publisher": "davidbabel",
   "author": {
     "email": "babel.david@gmail.com",
@@ -116,6 +116,10 @@
       {
         "command": "clever.fastInsert.curly",
         "title": "Clever: fast add {curly} block at end of line"
+      },
+      {
+        "command": "clever.fastInsert.array",
+        "title": "Clever: fast add [] array block (usefull on windows)"
       },
       {
         "command": "clever.fastInsert.arrowFunction",
