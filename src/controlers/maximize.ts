@@ -12,8 +12,8 @@ export async function toggleMaximize(withSideBar: boolean = true) {
     await Commands.executeCommand('workbench.action.evenEditorWidths');
     await Commands.executeCommand('workbench.action.focusActiveEditorGroup');
   } else {
-    await Commands.executeCommand('workbench.action.maximizeEditor');
-    await Commands.executeCommand('workbench.action.maximizeEditor');
+    await Commands.executeCommand('workbench.action.maximizeEditorHideSidebar');
+    await Commands.executeCommand('workbench.action.maximizeEditorHideSidebar');
   }
   currentlyExpended = !currentlyExpended;
 }
