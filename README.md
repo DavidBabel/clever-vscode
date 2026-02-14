@@ -9,7 +9,10 @@ After sharing it with almost all my friends they motivate me to push it for cumm
 Suggestions, PR or ideas for embed macros are very welcome.
 
 Think about [rating and review](https://marketplace.visualstudio.com/items?itemName=davidbabel.Clever).
-<br/><br/><br/>
+<br/><br/>
+
+⭐ Check also this amazing new icon theme : [🚀 Antigravity Icons Supercharged](https://marketplace.visualstudio.com/items?itemName=davidbabel.antigravity-icons-supercharged-blue) ⭐<br>
+Trust me, you might love it ❤️
 
 ## Features
 
